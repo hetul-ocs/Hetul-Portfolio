@@ -3,447 +3,298 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hetul Shah — AI Solutions for the Corporate World</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23070B17'/%3E%3Ctext x='16' y='23' font-family='Georgia%2C serif' font-size='22' font-weight='700' fill='%232563EB' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
---navy:#070B17;--navy2:#0C1326;--navy3:#121A33;--navy4:#1A2547;
---teal:#00E5C0;--teal2:#00C9A7;--teal3:rgba(0,229,192,0.10);
---white:#EEF2FF;--muted:#7A85A0;--muted2:#A8B3CC;
---border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
---card:rgba(255,255,255,0.03);
-}
-html{scroll-behavior:smooth}
-body{background:var(--navy);color:var(--white);font-family:'Outfit',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
-.grid-bg{position:fixed;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(7,11,23,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'DM Mono',monospace;font-size:12px;color:var(--teal);letter-spacing:0.1em;display:flex;align-items:center;gap:8px}
-.nav-logo::before{content:'';width:8px;height:8px;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.04em;transition:color 0.2s}
-.nav-links a:hover{color:var(--teal)}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 4rem;position:relative;z-index:1}
-.hero::before{content:'';position:absolute;top:10%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(0,229,192,0.07) 0%,transparent 60%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0.5}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:2}
-.hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;color:var(--teal);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.6s ease 0.1s forwards;display:flex;align-items:center;gap:12px}
-.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
-.hero-title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.8rem,6.5vw,6rem);line-height:1.02;margin-bottom:2rem;letter-spacing:-0.02em;opacity:0;animation:fadeUp 0.6s ease 0.25s forwards}
-.hero-title em{font-style:italic;color:var(--teal);font-weight:300}
-.hero-sub{font-size:1.1rem;color:var(--muted2);max-width:580px;line-height:1.8;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.6s ease 0.4s forwards}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.6s ease 0.55s forwards}
-.btn-primary{padding:0.85rem 1.85rem;background:var(--teal);color:var(--navy);font-weight:600;font-size:14px;border:none;cursor:pointer;letter-spacing:0.04em;transition:all 0.25s;font-family:'Outfit',sans-serif;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
-.btn-primary:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,229,192,0.25)}
-.btn-ghost{padding:0.85rem 1.85rem;background:transparent;color:var(--white);font-weight:500;font-size:14px;border:1px solid var(--border2);cursor:pointer;letter-spacing:0.04em;transition:all 0.25s;font-family:'Outfit',sans-serif;text-decoration:none;display:inline-block}
-.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
-.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2.5rem;margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--border);opacity:0;animation:fadeUp 0.6s ease 0.7s forwards}
-.stat-num{font-family:'Fraunces',serif;font-weight:400;font-size:2.4rem;color:var(--teal);line-height:1}
-.stat-label{font-size:12px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.5rem}
-.cred-bar{padding:2.5rem 3rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--navy2);position:relative;z-index:1}
-.cred-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:3rem;flex-wrap:wrap;justify-content:center}
-.cred-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-right:1rem}
-.cred-item{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--white);font-weight:400;position:relative;padding:0 0.5rem}
-.cred-item em{font-style:italic;color:var(--teal);font-size:0.85rem;display:block;font-family:'DM Mono',monospace;letter-spacing:0.08em;margin-top:2px;font-weight:400}
-section{padding:6rem 3rem;position:relative;z-index:1}
-.section-inner{max-width:1100px;margin:0 auto}
-.section-head{margin-bottom:3.5rem;max-width:680px}
-.section-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:12px}
-.section-tag::before{content:'';width:30px;height:1px;background:var(--teal)}
-.section-title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em}
-.section-title em{font-style:italic;color:var(--teal);font-weight:300}
-.section-sub{color:var(--muted2);font-size:1rem;line-height:1.8}
-.services{background:var(--navy2)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
-.service-card{padding:2.2rem 1.8rem;background:var(--navy2);border:none;transition:all 0.3s;position:relative;overflow:hidden;cursor:default}
-.service-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--teal);transition:width 0.4s}
-.service-card:hover{background:var(--navy3)}
-.service-card:hover::before{width:100%}
-.service-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.08em;margin-bottom:1.5rem}
-.service-icon{font-size:1.8rem;margin-bottom:1rem;color:var(--teal);font-family:'Fraunces',serif}
-.service-name{font-weight:600;font-size:1.05rem;margin-bottom:0.6rem;color:var(--white)}
-.service-desc{font-size:13px;color:var(--muted2);line-height:1.75;margin-bottom:1.2rem}
-.service-tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 9px;background:var(--teal3);color:var(--teal);border:1px solid rgba(0,229,192,0.18);letter-spacing:0.04em}
-.approach{background:var(--navy)}
-.approach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:2rem}
-.approach-step{padding:2rem 0;border-top:1px solid var(--border2);position:relative}
-.approach-step::after{content:'';position:absolute;top:-1px;left:0;width:40px;height:2px;background:var(--teal)}
-.approach-num{font-family:'Fraunces',serif;font-style:italic;font-size:2.5rem;color:var(--teal);line-height:1;margin-bottom:1rem;font-weight:300}
-.approach-title{font-weight:600;font-size:1.05rem;margin-bottom:0.6rem}
-.approach-desc{font-size:13.5px;color:var(--muted2);line-height:1.75}
-.projects{background:var(--navy2)}
-.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:1rem}
-.project-card{background:var(--navy3);border:1px solid var(--border);padding:2rem;position:relative;overflow:hidden;transition:all 0.3s}
-.project-card:hover{border-color:var(--teal3);transform:translateY(-3px)}
-.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity 0.3s}
-.project-card:hover::before{opacity:1}
-.project-cat{font-family:'DM Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;display:inline-block;padding:4px 10px;border:1px solid rgba(0,229,192,0.25);background:var(--teal3)}
-.project-title{font-family:'Fraunces',serif;font-size:1.4rem;margin-bottom:0.8rem;line-height:1.3;font-weight:500}
-.project-desc{font-size:13.5px;color:var(--muted2);line-height:1.75;margin-bottom:1.2rem}
-.project-stack{display:flex;flex-wrap:wrap;gap:6px;padding-top:1rem;border-top:1px solid var(--border)}
-.project-stack span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.04em}
-.project-stack span:not(:last-child)::after{content:'·';margin-left:6px;color:var(--teal)}
-.case-study{background:var(--navy)}
-.cs-wrap{margin-top:2rem;border:1px solid var(--border2);background:var(--navy3);position:relative;overflow:hidden}
-.cs-wrap::before{content:'CASE STUDY · 01';position:absolute;top:1.5rem;right:2rem;font-family:'DM Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:0.15em;border:1px solid rgba(0,229,192,0.3);padding:5px 12px;background:var(--teal3)}
-.cs-header{padding:3rem 2.5rem 2rem;border-bottom:1px solid var(--border)}
-.cs-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
-.cs-title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.8vw,2.4rem);margin-bottom:1.2rem;line-height:1.2;max-width:700px}
-.cs-title em{font-style:italic;color:var(--teal);font-weight:300}
-.cs-desc{color:var(--muted2);font-size:0.95rem;max-width:680px;line-height:1.85}
-.cs-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));border-bottom:1px solid var(--border)}
-.metric{padding:1.8rem 1.5rem;text-align:left;border-right:1px solid var(--border)}
-.metric:last-child{border-right:none}
-.metric-val{font-family:'Fraunces',serif;font-weight:400;font-size:2.2rem;color:var(--teal);display:block;line-height:1}
-.metric-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.5rem}
-.cs-content{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
-.ps-block{padding:2rem 2.5rem;border-right:1px solid var(--border)}
-.ps-block:last-child{border-right:none}
-.ps-head{font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:10px}
-.ps-head::before{content:'';width:20px;height:1px;background:var(--teal)}
-.ps-text{font-size:14px;color:var(--muted2);line-height:1.85}
-.arch-block{padding:2.5rem;border-bottom:1px solid var(--border)}
-.arch-title{font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
-.arch-title::before{content:'';width:20px;height:1px;background:var(--teal)}
-.arch-flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding-bottom:0.5rem}
-.arch-step{flex:1;min-width:115px;padding:1.2rem 0.8rem;background:var(--navy2);border:1px solid var(--border);text-align:center;position:relative;transition:all 0.2s}
-.arch-step:hover{border-color:var(--teal);background:var(--navy4)}
-.arch-step:not(:last-child)::after{content:'→';position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--teal);font-size:18px;z-index:1;background:var(--navy3);padding:0 3px;font-weight:300}
-.arch-step-icon{font-size:1.4rem;margin-bottom:0.5rem;display:block;color:var(--teal);font-family:'Fraunces',serif}
-.arch-step-name{font-size:11.5px;font-weight:600;color:var(--white);margin-bottom:0.3rem;line-height:1.3}
-.arch-step-tool{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--muted);letter-spacing:0.02em}
-.cs-stack{padding:2rem 2.5rem}
-.stack-grid{display:flex;flex-wrap:wrap;gap:8px}
-.stack-pill{padding:7px 14px;border:1px solid var(--border2);font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);background:var(--card);transition:all 0.2s}
-.stack-pill:hover{border-color:var(--teal);color:var(--teal);background:var(--teal3)}
-.experience{background:var(--navy2)}
-.timeline{margin-top:2rem;position:relative;padding-left:2rem}
-.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--teal),transparent)}
-.exp-item{margin-bottom:2.5rem;position:relative}
-.exp-item::before{content:'';position:absolute;left:-2.18rem;top:0.5rem;width:11px;height:11px;background:var(--teal);border-radius:50%;border:2px solid var(--navy2);box-shadow:0 0 0 1px var(--teal)}
-.exp-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem}
-.exp-title{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem}
-.exp-org{color:var(--teal);font-weight:500}
-.exp-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
-.exp-role{font-size:14px;color:var(--muted2);margin-bottom:0.8rem;font-style:italic}
-.exp-desc{font-size:13.5px;color:var(--muted2);line-height:1.85;max-width:720px}
-.about{background:var(--navy)}
-.about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start;margin-top:2rem}
-@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem}}
-.about-name{font-family:'Fraunces',serif;font-weight:400;font-size:2.6rem;margin-bottom:0.5rem;letter-spacing:-0.01em}
-.about-role{font-family:'DM Mono',monospace;font-size:12px;color:var(--teal);letter-spacing:0.1em;margin-bottom:1.8rem;text-transform:uppercase}
-.about-desc{color:var(--muted2);font-size:0.95rem;line-height:1.9;margin-bottom:1.2rem}
-.about-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
-.about-list li{font-size:13px;color:var(--muted2);display:flex;align-items:center;gap:14px}
-.about-list li::before{content:'';width:20px;height:1px;background:var(--teal);flex-shrink:0}
-.about-list li strong{color:var(--white);font-weight:500;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-right:8px}
-.principles{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.principle{background:var(--navy2);padding:1.6rem 2rem;border-left:2px solid transparent;transition:all 0.3s;cursor:default}
-.principle:hover{border-color:var(--teal);background:var(--navy3)}
-.principle-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);margin-bottom:0.4rem;letter-spacing:0.08em}
-.principle-title{font-weight:600;font-size:1rem;margin-bottom:0.4rem}
-.principle-desc{font-size:13px;color:var(--muted2);line-height:1.75}
-.cta-section{background:var(--navy3);text-align:center;padding:7rem 3rem;position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(0,229,192,0.07) 0%,transparent 60%);pointer-events:none}
-.cta-inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
-.cta-title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2rem,4vw,3.5rem);margin-bottom:1.2rem;line-height:1.1;letter-spacing:-0.01em}
-.cta-title em{font-style:italic;color:var(--teal);font-weight:300}
-.cta-sub{color:var(--muted2);margin-bottom:2.5rem;font-size:1.05rem;line-height:1.7}
-.cta-extra{margin-top:1.5rem;font-family:'DM Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:0.08em}
-.cta-extra span{color:var(--teal)}
-footer{padding:2.5rem 3rem;border-top:1px solid var(--border);position:relative;z-index:1;background:var(--navy)}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-copy{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.04em}
-.footer-brand{font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.08em}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .nav-links{display:none}
-  section{padding:4rem 1.5rem}
-  .hero{padding:6rem 1.5rem 3rem}
-  .cs-content{grid-template-columns:1fr}
-  .ps-block{border-right:none;border-bottom:1px solid var(--border)}
-  .metric{border-right:none;border-bottom:1px solid var(--border)}
-  .cred-bar{padding:2rem 1.5rem}
-  .cta-section{padding:5rem 1.5rem}
-  footer{padding:2rem 1.5rem}
-}
-</style>
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<title>Hetul Shah — AI &amp; Software Engineer</title>
+<meta name="description" content="Hetul Shah — AI and software engineer from Ahmedabad. Ex-Deutsche Bank Analyst, ex-AI Intern at an applied AI lab, B.Tech CSE from Nirma University. Runner-up at MINeD Hackathon, zone-level winner at Deutsche Bank's internal hackathon. Founder of Only Corporate Solutions.">
+<link rel="icon" type="image/svg+xml" href="favicons/favicon-h-gradient.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 </head>
-<body>
-<div class="grid-bg"></div>
-<nav>
-  <div class="nav-logo">OCS // Hetul Shah</div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#case-study">Case Study</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Only Corporate Solutions · Available worldwide</div>
-    <h1 class="hero-title">AI that ships,<br>for businesses that <em>can't afford guesswork.</em></h1>
-    <p class="hero-sub">I'm Hetul — founder of OCS. With 4+ years of hands-on AI experience and a foundation built across Deutsche Bank's enterprise systems and Dynatech's applied AI lab, I help companies turn operational pain points into production-grade AI systems. Real working solutions — not demos, not slide decks.</p>
-    <div class="hero-ctas">
-      <a href="#case-study" class="btn-primary">See How I Work →</a>
-      <a href="#contact" class="btn-ghost">Start a Conversation</a>
-    </div>
-    <div class="hero-stats">
-      <div><div class="stat-num">4+</div><div class="stat-label">Years working with AI</div></div>
-      <div><div class="stat-num">10+</div><div class="stat-label">AI projects delivered</div></div>
-      <div><div class="stat-num">5+</div><div class="stat-label">AI domains served</div></div>
-      <div><div class="stat-num">100%</div><div class="stat-label">Custom-built systems</div></div>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top" aria-label="Hetul Shah — home">
+      <span class="nav-word">Hetul Shah<span class="nav-suffix">// AI Engineer</span></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <!-- TODO: confirm LinkedIn handle -->
+      <a class="nav-social" href="https://www.linkedin.com/in/hetulshah13/" target="_blank" rel="noopener" aria-label="Hetul Shah on LinkedIn">
+        <svg viewBox="0 0 448 448" fill="currentColor" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88V448zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+      </a>
+      <a href="#contact" class="btn btn--ghost btn--sm nav-cta">Get in touch</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+        <span></span><span></span>
+      </button>
     </div>
   </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <h1 class="hero-title reveal" style="--d:.08s">I build AI systems<br>that survive contact<br>with <span class="hero-accent hero-rotator" data-words='["production.","real users.","messy data.","enterprise scale."]'>production.</span></h1>
+    <p class="hero-sub reveal" style="--d:.16s">I&rsquo;m Hetul Shah — an AI and software engineer from Ahmedabad. Computer Science at Nirma University, applied AI as an intern, ten months as a full-time Analyst at Deutsche Bank, and now building AI products of my own through Only Corporate Solutions. A couple of hackathon podiums along the way.</p>
+    <div class="hero-ctas reveal" style="--d:.24s">
+      <a href="#projects" class="btn btn--primary">See what I&rsquo;ve built <span aria-hidden="true">&rarr;</span></a>
+      <a href="#contact" class="btn btn--ghost">Get in touch</a>
+    </div>
+    <dl class="hero-stats reveal" style="--d:.32s">
+      <div class="stat"><dt class="stat-num">4+</dt><dd class="stat-label">Years building with AI</dd></div>
+      <div class="stat"><dt class="stat-num">10+</dt><dd class="stat-label">AI projects shipped</dd></div>
+      <div class="stat"><dt class="stat-num">2&times;</dt><dd class="stat-label">Hackathon podium finishes</dd></div>
+      <div class="stat"><dt class="stat-num">1</dt><dd class="stat-label">Venture founded</dd></div>
+    </dl>
+  </div>
 </section>
-<div class="cred-bar">
-  <div class="cred-inner">
-    <div class="cred-label">Background</div>
-    <div class="cred-item">Deutsche Bank<em>Full-Time Analyst</em></div>
-    <div class="cred-item">Dynatech<em>AI Intern</em></div>
-    <div class="cred-item">Nirma University<em>B.Tech CSE</em></div>
-    <div class="cred-item">Only Corporate Solutions<em>Founder · 2026</em></div>
+
+<!-- ============ CRED STRIP ============ -->
+<div class="cred-strip">
+  <div class="container cred-inner reveal">
+    <span class="cred-label">Background</span>
+    <div class="cred-item"><span class="cred-name">Deutsche Bank</span><span class="cred-role">Full-Time Analyst</span></div>
+    <div class="cred-item"><span class="cred-name">Applied AI Lab</span><span class="cred-role">AI Intern</span></div>
+    <div class="cred-item"><span class="cred-name">Nirma University</span><span class="cred-role">B.Tech CSE</span></div>
+    <div class="cred-item"><span class="cred-name">Only Corporate Solutions</span><span class="cred-role">Founder</span></div>
   </div>
 </div>
-<section class="services" id="services">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="section-tag">Services</div>
-      <h2 class="section-title">What I build<br><em>for the corporate world.</em></h2>
-      <p class="section-sub">I work across the full spectrum of applied AI. Pick a problem domain — or invite me to your site to identify the ones worth solving.</p>
-    </div>
+
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills">
+  <div class="container">
+    <header class="section-head section-head--center reveal">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-title">What I actually<br>know how to build.</h2>
+      <p class="section-sub">Three areas I&rsquo;ve shipped real work in — with the engineering discipline Deutsche Bank drilled into me underneath all of them.</p>
+    </header>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01 / Automation</div>
-        <div class="service-icon">⊕</div>
-        <div class="service-name">Task & Workflow Automation</div>
-        <div class="service-desc">Replace repetitive manual processes with intelligent automation — across sales, ops, finance, HR. n8n + LLM orchestration to make your tools actually talk to each other.</div>
-        <div class="service-tags"><span class="tag">n8n</span><span class="tag">LangChain</span><span class="tag">Python</span><span class="tag">APIs</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02 / Computer Vision</div>
-        <div class="service-icon">◉</div>
-        <div class="service-name">Image & Video Processing</div>
-        <div class="service-desc">Object detection, OCR, video analytics, quality inspection, surveillance intelligence. From classical CV to modern vision-language models — I match the right tool to your accuracy and cost targets.</div>
-        <div class="service-tags"><span class="tag">OpenCV</span><span class="tag">YOLO</span><span class="tag">PyTorch</span><span class="tag">VLMs</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03 / NLP & LLMs</div>
-        <div class="service-icon">◇</div>
-        <div class="service-name">LLM Applications</div>
-        <div class="service-desc">Custom chatbots, summarisers, classifiers, and AI co-pilots fine-tuned to your domain — built on OpenAI, Anthropic, Groq, or open-source models depending on your privacy and cost needs.</div>
-        <div class="service-tags"><span class="tag">OpenAI</span><span class="tag">Claude</span><span class="tag">Groq</span><span class="tag">Llama</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">04 / RAG Systems</div>
-        <div class="service-icon">▣</div>
-        <div class="service-name">RAG & Knowledge AI</div>
-        <div class="service-desc">Turn your internal documents, PDFs, manuals, and databases into a queryable AI brain. Production-ready retrieval-augmented systems your team can actually trust and use.</div>
-        <div class="service-tags"><span class="tag">Vector DBs</span><span class="tag">Embeddings</span><span class="tag">Pinecone</span><span class="tag">FAISS</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">05 / Doc Intelligence</div>
-        <div class="service-icon">◈</div>
-        <div class="service-name">Document Intelligence</div>
-        <div class="service-desc">Extract structured data from invoices, contracts, forms, and scanned documents — at scale, with confidence scoring and human-in-the-loop validation where it matters.</div>
-        <div class="service-tags"><span class="tag">OCR</span><span class="tag">LayoutLM</span><span class="tag">Tesseract</span><span class="tag">Donut</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">06 / Consulting</div>
-        <div class="service-icon">◎</div>
-        <div class="service-name">On-Site AI Discovery</div>
-        <div class="service-desc">Not sure where AI fits? I visit your office, map your workflows, and identify the highest-ROI automation opportunities — before writing a single line of code.</div>
-        <div class="service-tags"><span class="tag">Audit</span><span class="tag">Strategy</span><span class="tag">Roadmap</span></div>
-      </div>
+      <article class="service-card reveal">
+        <div class="service-top">
+          <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4.5A2.5 2.5 0 0 1 17 9v5"/></svg></span>
+          <span class="service-num">01 / Agents</span>
+        </div>
+        <h3 class="service-name">AI Agents &amp; Automation</h3>
+        <p class="service-desc">Agent pipelines that connect systems, tools and LLMs into workflows that run without anyone watching them.</p>
+        <div class="service-tags"><span>n8n</span><span>LangChain</span><span>Python</span><span>REST APIs</span></div>
+      </article>
+      <article class="service-card reveal" style="--d:.06s">
+        <div class="service-top">
+          <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg></span>
+          <span class="service-num">02 / LLMs</span>
+        </div>
+        <h3 class="service-name">LLM &amp; Retrieval Systems</h3>
+        <p class="service-desc">Assistants and copilots grounded in your own knowledge base — answers with citations you can actually check.</p>
+        <div class="service-tags"><span>OpenAI</span><span>Claude</span><span>Vector DBs</span><span>RAG</span></div>
+      </article>
+      <article class="service-card reveal" style="--d:.12s">
+        <div class="service-top">
+          <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <span class="service-num">03 / Vision</span>
+        </div>
+        <h3 class="service-name">Vision &amp; Document AI</h3>
+        <p class="service-desc">Turning images, video and scanned documents into structured data a system can act on — at volume.</p>
+        <div class="service-tags"><span>OpenCV</span><span>YOLO</span><span>PyTorch</span><span>OCR</span></div>
+      </article>
     </div>
   </div>
 </section>
-<section class="approach">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="section-tag">How I work</div>
-      <h2 class="section-title">A process built for<br><em>real enterprise outcomes.</em></h2>
-    </div>
-    <div class="approach-grid">
-      <div class="approach-step"><div class="approach-num">01</div><div class="approach-title">Discover</div><div class="approach-desc">I visit, observe, and ask hard questions. Most "AI projects" fail because the problem was framed wrong. I make sure we're solving what actually hurts.</div></div>
-      <div class="approach-step"><div class="approach-num">02</div><div class="approach-title">Architect</div><div class="approach-desc">I design the simplest system that can solve the problem reliably. No over-engineered AI stacks — the right tool for the actual scale.</div></div>
-      <div class="approach-step"><div class="approach-num">03</div><div class="approach-title">Build</div><div class="approach-desc">Iterative delivery. You see working prototypes within weeks, not quarters. Feedback shapes the system as it grows.</div></div>
-      <div class="approach-step"><div class="approach-num">04</div><div class="approach-title">Hand off</div><div class="approach-desc">Documentation, training, and runbooks. Your team owns the system after I'm done. No vendor lock-in, no perpetual dependency.</div></div>
-    </div>
-  </div>
-</section>
-<section class="projects" id="projects">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="section-tag">Selected work</div>
-      <h2 class="section-title">Projects across the<br><em>AI stack.</em></h2>
-      <p class="section-sub">A snapshot of systems built across internships, full-time work, and in-house at OCS. Details available on request under NDA.</p>
-    </div>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="section section--tint" id="achievements">
+  <div class="container">
+    <header class="section-head section-head--center reveal">
+      <p class="eyebrow">Achievements</p>
+      <h2 class="section-title">Wins worth putting on the wall.</h2>
+      <p class="section-sub">Competitive builds under a clock, judged against everyone else in the room.</p>
+    </header>
     <div class="project-grid">
-      <div class="project-card">
-        <div class="project-cat">Image Processing</div>
-        <h3 class="project-title">Industrial Defect Detection</h3>
-        <p class="project-desc">Real-time visual inspection pipeline built during my time at Dynatech — flagged surface defects on manufactured parts using a custom-trained YOLO model with confidence thresholds tuned to specific tolerance bands.</p>
-        <div class="project-stack"><span>YOLOv8</span><span>OpenCV</span><span>FastAPI</span><span>ONNX</span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-cat">Video Processing</div>
-        <h3 class="project-title">Video Analytics Pipeline</h3>
-        <p class="project-desc">Frame-by-frame intelligent processing system for long-form video — object tracking, scene segmentation, and event extraction with structured JSON output for downstream analytics.</p>
-        <div class="project-stack"><span>PyTorch</span><span>FFmpeg</span><span>DeepSORT</span><span>Python</span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-cat">Document AI</div>
-        <h3 class="project-title">Text Extraction at Scale</h3>
-        <p class="project-desc">Document intelligence system that extracts structured fields from scanned invoices and forms — combines OCR, layout understanding, and LLM post-processing to hit 95%+ accuracy on production docs.</p>
-        <div class="project-stack"><span>Tesseract</span><span>LayoutLM</span><span>OpenAI</span><span>PostgreSQL</span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-cat">RAG · LLM</div>
-        <h3 class="project-title">Enterprise Knowledge Assistant</h3>
-        <p class="project-desc">Internal AI chatbot trained on manuals, SOPs, and historical tickets. Sales and support teams query in natural language; the system retrieves grounded answers with source citations.</p>
-        <div class="project-stack"><span>LangChain</span><span>Pinecone</span><span>OpenAI</span><span>Streamlit</span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-cat">Automation · LLM</div>
+      <article class="project-card reveal">
+        <span class="chip">Runner-up</span>
+        <h3 class="project-title">MINeD Hackathon</h3>
+        <p class="project-desc">Finished runner-up at MINeD, Nirma University&rsquo;s flagship data and AI hackathon — a multi-day build against a live problem statement, judged on working software rather than a pitch. Scoped the problem down to what could actually be shipped in the time available, then shipped it.</p>
+        <div class="project-stack"><span>Nirma University</span><span>Team build</span><span>AI / ML track</span></div>
+      </article>
+      <article class="project-card reveal" style="--d:.06s">
+        <span class="chip">1st place · Zone level</span>
+        <h3 class="project-title">Deutsche Bank Internal Hackathon</h3>
+        <p class="project-desc">Won first place at zone level in Deutsche Bank&rsquo;s internal hackathon, competing against teams from across the bank&rsquo;s engineering org. Built and defended a working solution inside enterprise constraints — real systems, real data-handling rules, no greenfield shortcuts.</p>
+        <div class="project-stack"><span>Deutsche Bank</span><span>Zone winner</span><span>Enterprise systems</span></div>
+      </article>
+      <article class="project-card reveal" style="--d:.12s">
+        <span class="chip">Venture</span>
+        <h3 class="project-title">Founded Only Corporate Solutions</h3>
+        <p class="project-desc">Started my own AI practice in 2026 — going from employee to running delivery end to end: finding the problem, architecting the system, building it, and handing it over documented. LeadFlow Pro is the first in-house product out of it.</p>
+        <div class="project-stack"><span>Founder</span><span>Ahmedabad</span><span>2026</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section" id="projects">
+  <div class="container">
+    <header class="section-head section-head--center reveal">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="section-title">Things I&rsquo;ve built.</h2>
+      <p class="section-sub">Three that best show the range. More — knowledge assistants, video analytics, document extraction, outreach automation — on request.</p>
+    </header>
+    <div class="project-grid">
+      <article class="project-card reveal">
+        <span class="chip">Agents · Automation</span>
         <h3 class="project-title">LeadFlow Pro</h3>
-        <p class="project-desc">OCS's in-house AI lead discovery product. Autonomous agent pipeline that finds, enriches, and qualifies B2B leads end-to-end — replacing manual prospecting workflows for sales teams.</p>
+        <p class="project-desc">My own product — an agent pipeline that discovers, enriches and qualifies B2B leads end to end, no manual step.</p>
         <div class="project-stack"><span>n8n</span><span>SerpAPI</span><span>Apollo.io</span><span>Unipile</span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-cat">Automation</div>
-        <h3 class="project-title">Bulk Email Campaign System</h3>
-        <p class="project-desc">Production-grade n8n workflow handling personalised outreach at scale — Gmail integration, attachment handling, delivery status tracking, and bounce-rate intelligence baked in.</p>
-        <div class="project-stack"><span>n8n</span><span>Gmail API</span><span>Google Sheets</span><span>Python</span></div>
-      </div>
+      </article>
+      <article class="project-card reveal" style="--d:.06s">
+        <span class="chip">Optimisation</span>
+        <h3 class="project-title">Pharma Inventory Optimisation</h3>
+        <p class="project-desc">Supply chain planning for a pharmaceutical company — solver-driven stock levels and reorder points across warehouses, balancing stockouts against shelf-life expiry.</p>
+        <div class="project-stack"><span>Python</span><span>OR-Tools</span><span>pandas</span><span>SQL</span></div>
+      </article>
+      <article class="project-card reveal" style="--d:.12s">
+        <span class="chip">Computer Vision</span>
+        <h3 class="project-title">Industrial Defect Detection</h3>
+        <p class="project-desc">Real-time visual inspection for a manufacturing line — catches surface defects on parts as they move down the belt.</p>
+        <div class="project-stack"><span>YOLOv8</span><span>OpenCV</span><span>FastAPI</span><span>ONNX</span></div>
+      </article>
     </div>
   </div>
 </section>
-<section class="case-study" id="case-study">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="section-tag">Deep dive · LeadFlow Pro</div>
-      <h2 class="section-title">From manual prospecting<br>to <em>autonomous lead generation.</em></h2>
-      <p class="section-sub">A full breakdown of one system — to show how I think, architect, and ship.</p>
-    </div>
-    <div class="cs-wrap">
-      <div class="cs-header">
-        <div class="cs-label">The Setup</div>
-        <h3 class="cs-title">Sales teams were burning hours on manual prospecting — <em>with nothing reliable to show for it.</em></h3>
-        <p class="cs-desc">Enterprise BD teams were spending 60–70% of their week researching companies, verifying contacts, and assembling lead lists — most outdated by the time they reached the rep. No scalable system existed to discover and qualify leads continuously and consistently.</p>
-      </div>
-      <div class="cs-metrics">
-        <div class="metric"><span class="metric-val">~70%</span><span class="metric-label">Prospecting time eliminated</span></div>
-        <div class="metric"><span class="metric-val">Real-time</span><span class="metric-label">Continuous discovery</span></div>
-        <div class="metric"><span class="metric-val">5+ sources</span><span class="metric-label">Enriched per lead</span></div>
-        <div class="metric"><span class="metric-val">Zero-touch</span><span class="metric-label">CRM-ready output</span></div>
-      </div>
-      <div class="cs-content">
-        <div class="ps-block"><div class="ps-head">The Problem</div><div class="ps-text">No structured pipeline existed to find, qualify, and enrich company leads at scale. Each rep was using Google, LinkedIn, and intuition — leading to inconsistent data, wasted time, and missed pipeline.</div></div>
-        <div class="ps-block"><div class="ps-head">The Solution</div><div class="ps-text">An autonomous AI agent pipeline that discovers target companies via web search, enriches them with contact and firmographic data from multiple sources, then delivers structured, sales-ready records into Sheets or CRM — zero manual intervention.</div></div>
-      </div>
-      <div class="arch-block">
-        <div class="arch-title">System architecture</div>
-        <div class="arch-flow">
-          <div class="arch-step"><span class="arch-step-icon">⊕</span><div class="arch-step-name">Trigger</div><div class="arch-step-tool">n8n Scheduler</div></div>
-          <div class="arch-step"><span class="arch-step-icon">⊙</span><div class="arch-step-name">Web Discovery</div><div class="arch-step-tool">SerpAPI</div></div>
-          <div class="arch-step"><span class="arch-step-icon">⊚</span><div class="arch-step-name">AI Extraction</div><div class="arch-step-tool">LangChain + LLM</div></div>
-          <div class="arch-step"><span class="arch-step-icon">◎</span><div class="arch-step-name">Enrichment</div><div class="arch-step-tool">Apollo.io</div></div>
-          <div class="arch-step"><span class="arch-step-icon">◈</span><div class="arch-step-name">Outreach Ready</div><div class="arch-step-tool">Unipile</div></div>
-          <div class="arch-step"><span class="arch-step-icon">▣</span><div class="arch-step-name">CRM Sync</div><div class="arch-step-tool">Google Sheets</div></div>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section section--tint" id="experience">
+  <div class="container container--narrow">
+    <header class="section-head reveal">
+      <p class="eyebrow">Experience</p>
+      <h2 class="section-title">Where I&rsquo;ve worked.</h2>
+    </header>
+    <ol class="timeline">
+      <li class="exp-item reveal">
+        <div class="exp-head">
+          <h3 class="exp-title">Founder · <span class="exp-org">Only Corporate Solutions</span></h3>
+          <span class="exp-date">2026 — Present</span>
         </div>
-      </div>
-      <div class="cs-stack">
-        <div class="arch-title">Full stack</div>
-        <div class="stack-grid">
-          <span class="stack-pill">n8n</span><span class="stack-pill">LangChain</span><span class="stack-pill">OpenAI</span><span class="stack-pill">SerpAPI</span><span class="stack-pill">Apollo.io</span><span class="stack-pill">Unipile</span><span class="stack-pill">Google Sheets API</span><span class="stack-pill">Python</span><span class="stack-pill">REST</span>
+        <p class="exp-role">Ahmedabad, Gujarat</p>
+        <p class="exp-desc">Run my own AI practice, building custom agents, automation systems, computer vision pipelines and RAG solutions for businesses. I own the whole cycle — scoping the problem on site, architecting, building, and handing over documented systems the client&rsquo;s own team can maintain. LeadFlow Pro, an autonomous B2B lead generation pipeline, is the first in-house product out of it.</p>
+      </li>
+      <li class="exp-item reveal" style="--d:.05s">
+        <div class="exp-head">
+          <h3 class="exp-title">Full-Time Analyst · <span class="exp-org">Deutsche Bank</span></h3>
+          <span class="exp-date">10 months</span>
         </div>
-      </div>
-    </div>
+        <p class="exp-role">Enterprise systems &amp; financial technology</p>
+        <p class="exp-desc">Built and maintained production systems for financial operations at one of the world&rsquo;s largest investment banks. This is where I learned what &ldquo;production-ready&rdquo; actually costs: code review standards, compliance constraints, release discipline, and system scale where every change touches real money and real customer data. Also took <strong>first place at zone level in the bank&rsquo;s internal hackathon</strong>, competing against engineering teams from across the organisation.</p>
+      </li>
+      <li class="exp-item reveal" style="--d:.1s">
+        <div class="exp-head">
+          <h3 class="exp-title">AI Intern · <span class="exp-org">Applied AI Lab</span></h3>
+          <span class="exp-date">Applied AI &amp; ML</span>
+        </div>
+        <p class="exp-role">Image, video &amp; document intelligence</p>
+        <p class="exp-desc">Worked across the AI division on production-facing projects — image processing pipelines, video analytics, document intelligence and text extraction. Handled the full loop rather than just modelling: data collection, model selection, training, deployment and integration into workflows that people actually used. The internship that turned coursework into shippable systems.</p>
+      </li>
+      <li class="exp-item reveal" style="--d:.15s">
+        <div class="exp-head">
+          <h3 class="exp-title">B.Tech, Computer Science · <span class="exp-org">Nirma University</span></h3>
+          <span class="exp-date">Ahmedabad</span>
+        </div>
+        <p class="exp-role">Degree, plus a lot of self-directed AI work</p>
+        <p class="exp-desc">Started building with AI in my second year, well before it was the obvious path — classifiers, computer vision projects, NLP pipelines and deep learning experiments alongside the formal curriculum. Finished <strong>runner-up at MINeD</strong>, the university&rsquo;s flagship data and AI hackathon, and graduated with a stack of working projects rather than a stack of certificates.</p>
+      </li>
+    </ol>
   </div>
 </section>
-<section class="experience" id="experience">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="section-tag">Experience</div>
-      <h2 class="section-title">Where I've<br><em>shipped real systems.</em></h2>
-    </div>
-    <div class="timeline">
-      <div class="exp-item">
-        <div class="exp-head"><div class="exp-title">Founder · <span class="exp-org">Only Corporate Solutions</span></div><div class="exp-date">2026 — Present</div></div>
-        <div class="exp-role">Ahmedabad, Gujarat · Serving clients worldwide</div>
-        <div class="exp-desc">Launched OCS in 2026 to bring production-grade AI to enterprises that can't afford ineffective consultants or generic AI tools. Building custom AI agents, automation systems, computer vision pipelines, RAG solutions, and intelligence layers for clients globally — leveraging years of AI exposure from college research, internship work, and full-time enterprise experience.</div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-head"><div class="exp-title">Full-Time Analyst · <span class="exp-org">Deutsche Bank</span></div><div class="exp-date">10 months</div></div>
-        <div class="exp-role">Enterprise systems & financial technology</div>
-        <div class="exp-desc">Worked as a full-time Analyst at one of the world's largest investment banks — building and maintaining production systems for financial operations. Learned how enterprise-grade software is actually built and reviewed: code quality standards, compliance constraints, system scale, and the discipline required when every system handles real money and real customer data. This is where I learned what "production-ready" actually means.</div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-head"><div class="exp-title">AI Intern · <span class="exp-org">Dynatech</span></div><div class="exp-date">AI Research & Applied ML</div></div>
-        <div class="exp-role">Hands-on AI across image, video & document domains</div>
-        <div class="exp-desc">Worked in Dynatech's AI division on multiple production-facing projects — image processing pipelines, video analytics, document intelligence, and text extraction systems. Gained deep, hands-on experience across the applied AI stack: model selection, training, deployment, and integration into real business workflows. The internship that turned theoretical knowledge into shippable systems.</div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-head"><div class="exp-title">AI Research & Projects · <span class="exp-org">Nirma University</span></div><div class="exp-date">3+ years during B.Tech CSE</div></div>
-        <div class="exp-role">Self-directed AI exploration alongside formal coursework</div>
-        <div class="exp-desc">Started working with AI in my second year — long before it was the obvious career path. Built classifiers, computer vision projects, NLP pipelines, and explored deep learning hands-on while completing my Computer Science degree. By graduation, I had more AI projects under my belt than many engineers do years into their careers.</div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="about" id="about">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="section-tag">About</div>
-      <h2 class="section-title">The person you'll<br><em>actually work with.</em></h2>
-    </div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container container--wide">
+    <header class="section-head reveal">
+      <p class="eyebrow">About</p>
+      <h2 class="section-title">A bit more about me.</h2>
+    </header>
     <div class="about-grid">
-      <div>
-        <div class="about-name">Hetul Shah</div>
-        <div class="about-role">Founder · OCS</div>
-        <p class="about-desc">Computer Science engineer from Nirma University with 4+ years of AI experience — starting in college, sharpened during my AI internship at Dynatech, and tempered by 10 months as a full-time Analyst at Deutsche Bank where I learned what enterprise-grade actually demands.</p>
-        <p class="about-desc">In 2026, I launched OCS to combine all of it — academic depth, applied AI skills, and enterprise discipline — into one practice that solves real operational problems for businesses. I'll come to your office, anywhere in the world, map your workflows, and tell you honestly what AI can solve and what it can't.</p>
+      <div class="about-intro reveal">
+        <h3 class="about-name">Hetul Shah</h3>
+        <p class="about-role">AI &amp; Software Engineer</p>
+        <p class="about-desc">Computer Science engineer from Nirma University with 4+ years of hands-on AI work — started in college, sharpened it during my AI internship, and got the engineering discipline beaten into me over ten months as a full-time Analyst at Deutsche Bank.</p>
+        <p class="about-desc">In 2026 I started Only Corporate Solutions to put all three together — academic depth, applied AI, and enterprise rigour — and solve real operational problems for businesses. I still write most of the code myself, and I still prefer a working prototype to a deck.</p>
         <ul class="about-list">
-          <li><strong>Based</strong>Ahmedabad, Gujarat</li>
-          <li><strong>Available</strong>On-site visits worldwide</li>
-          <li><strong>Comfortable with</strong>NDAs, MSAs, enterprise procurement</li>
-          <li><strong>Open to</strong>Project-based, retainer, or referral work</li>
+          <li><strong>Based</strong><span>Ahmedabad, Gujarat, India</span></li>
+          <li><strong>Focus</strong><span>Applied AI, agents &amp; automation</span></li>
+          <li><strong>Education</strong><span>B.Tech CSE, Nirma University</span></li>
+          <li><strong>Open to</strong><span>Roles, freelance work &amp; collaborations</span></li>
         </ul>
       </div>
       <div class="principles">
-        <div class="principle"><div class="principle-num">01 — Depth</div><div class="principle-title">I go deep into the actual problem</div><div class="principle-desc">Most AI consultants stop at the surface. I dig until I understand what's really breaking — usually the AI is the easy part once you know that.</div></div>
-        <div class="principle"><div class="principle-num">02 — Honesty</div><div class="principle-title">I'll tell you when AI isn't the answer</div><div class="principle-desc">Some problems need a SQL query, not a model. I'd rather lose a sale than build something that doesn't work — my reputation depends on it.</div></div>
-        <div class="principle"><div class="principle-num">03 — Ownership</div><div class="principle-title">No black boxes, no lock-in</div><div class="principle-desc">Every system I build, your team understands and can own. Documentation, training, and clean architecture by default.</div></div>
-        <div class="principle"><div class="principle-num">04 — Measurable</div><div class="principle-title">Outcomes you can put on a slide</div><div class="principle-desc">Time saved, leads generated, errors eliminated. We define what success looks like before we start — and we measure it after we ship.</div></div>
+        <article class="principle reveal">
+          <p class="principle-num">01 — Depth</p>
+          <h4 class="principle-title">I go deep into the actual problem</h4>
+          <p class="principle-desc">Most failed AI projects were framed wrong, not built wrong. I dig until I understand what&rsquo;s really breaking — the model is usually the easy part once you know that.</p>
+        </article>
+        <article class="principle reveal" style="--d:.07s">
+          <p class="principle-num">02 — Honesty</p>
+          <h4 class="principle-title">I&rsquo;ll say when AI isn&rsquo;t the answer</h4>
+          <p class="principle-desc">Some problems need a SQL query and a cron job, not a model. I&rsquo;d rather say that out loud than ship something impressive that quietly doesn&rsquo;t work.</p>
+        </article>
+        <article class="principle reveal" style="--d:.14s">
+          <p class="principle-num">03 — Ownership</p>
+          <h4 class="principle-title">I ship it and then support it</h4>
+          <p class="principle-desc">Documentation, clean architecture and no black boxes. Whoever inherits my code should be able to read it, change it, and not need me on a call to do so.</p>
+        </article>
+        <article class="principle reveal" style="--d:.21s">
+          <p class="principle-num">04 — Measurable</p>
+          <h4 class="principle-title">Outcomes, not activity</h4>
+          <p class="principle-desc">Hours saved, errors removed, throughput gained. I like defining what success looks like before starting — and then actually measuring it afterwards.</p>
+        </article>
       </div>
     </div>
   </div>
 </section>
-<section class="cta-section" id="contact">
-  <div class="cta-inner">
-    <div class="section-tag" style="justify-content:center;display:inline-flex;margin-bottom:1.2rem">Let's talk</div>
-    <h2 class="cta-title">Got a workflow that's<br><em>quietly burning hours?</em></h2>
-    <p class="cta-sub">Tell me about it. I'll visit your office — wherever you are in the world — listen to the pain, and tell you straight whether AI can solve it. No fluff, no jargon, no slide decks.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="mailto:hetul@onlycorporatesolutions.com" class="btn-primary">hetul@onlycorporatesolutions.com</a>
-      <a href="" class="btn-ghost" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hetul-onlycorporatesolutions/30min'});return false;">Schedule a discovery call</a>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <p class="eyebrow eyebrow--plain">Get in touch</p>
+      <h2 class="cta-title">Building something interesting? Let&rsquo;s talk.</h2>
+      <p class="cta-sub">Whether it&rsquo;s a role, a project, or just a problem you&rsquo;re stuck on — send me a note. I read everything and reply to anything that isn&rsquo;t a template.</p>
+      <div class="cta-actions">
+        <a href="mailto:hetulshah13@gmail.com" class="btn btn--primary">hetulshah13@gmail.com</a>
+        <a href="https://www.linkedin.com/in/hetulshah13/" class="btn btn--ghost" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="cta-extra">Open to <span>roles, freelance &amp; collaborations</span> · Based in Ahmedabad · Available remotely</p>
     </div>
-    <div class="cta-extra">Currently accepting <span>3 new clients</span> · Based in Ahmedabad · Available worldwide</div>
   </div>
 </section>
-<footer>
-  <div class="footer-inner">
-    <div class="footer-copy">© 2026 Only Corporate Solutions · Crafted in Ahmedabad · Serving worldwide</div>
-    <div class="footer-brand">OCS — AI Solutions for the Corporate World</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">© 2026 Hetul Shah · Built in Ahmedabad</p>
+    <p class="footer-brand">AI &amp; Software Engineer</p>
   </div>
 </footer>
 </body>
