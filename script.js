@@ -1,4 +1,4 @@
-/* Hetul Shah — OCS Portfolio
+/* Hetul Shah — Portfolio
    Plain vanilla JS: nav state, mobile menu, hero word rotator,
    scroll reveals, active-link highlighting. No dependencies. */
 (function () {
